@@ -98,14 +98,14 @@ class _RegisterViewState extends State<RegisterView> {
             child: const Text('Register', style: TextStyle(fontSize: 18),),
             onPressed: () async {
               _signup();
-              // Timer(Duration(milliseconds: 500), () {
-              //   _signin();
-              // });
+              Timer(Duration(milliseconds: 500), () {
+                _signin();
+              });
 
               print("after _signup ");
-              // Timer(Duration(milliseconds: 1000), () async {
-              //   await Navigator.of(context).pushNamedAndRemoveUntil('/app', (route) => false);
-              // });
+              Timer(Duration(milliseconds: 1000), () async {
+                await Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+              });
 
 
             },

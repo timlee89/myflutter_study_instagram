@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:myflutter_study_instagram/utils/colors.dart';
 
 class EmailLoginView extends StatefulWidget {
   const EmailLoginView({Key? key}) : super(key: key);
@@ -50,6 +51,7 @@ class _EmailLoginViewState extends State<EmailLoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: backgroundColor2,
         title: Text("Email Login"),
       ),
       body: Center(

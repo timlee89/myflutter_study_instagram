@@ -1,8 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:myflutter_study_instagram/backend/email_login.dart';
 import 'package:myflutter_study_instagram/backend/register.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:myflutter_study_instagram/pages/first_page.dart';
+import 'package:myflutter_study_instagram/pages/second_page.dart';
+import 'package:myflutter_study_instagram/pages/setting.dart';
+import 'package:myflutter_study_instagram/pages/third_page.dart';
 import 'package:myflutter_study_instagram/utils/colors.dart';
+import 'package:myflutter_study_instagram/widgets/bottom_bar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,13 +37,20 @@ class MyApp extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active) {
             if (snapshot.hasData) {
-              return Center(
-                  child: Container(
-                    child: Text(
-                      '${snapshot.data}',
-                      style: TextStyle(fontSize: 20, color: Colors.white),
-                    ),
-                  )
+              return const DefaultTabController(
+                length: 4,
+                child: Scaffold(
+                  body: TabBarView(
+                    physics: NeverScrollableScrollPhysics(),
+                    children: [
+                      FirstPage(),
+                      SecondPage(),
+                      ThirdPage(),
+                      Setting(),
+                    ],
+                  ),
+                  bottomNavigationBar: Bottom(),
+                ),
               );
             } else if (snapshot.hasError) {
               return Center(
@@ -52,12 +65,15 @@ class MyApp extends StatelessWidget {
               ),
             );
           }
-          return const RegisterView();
+          return const EmailLoginView();
         },
       ),
+
       routes: {
         '/register': (context) => const RegisterView(),
+        '/emailLogin': (context) => const EmailLoginView(),
       },
+
     );
   }
 }
