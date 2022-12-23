@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:myflutter_study2/src/pages/home.dart';
 
 class EmailLoginView extends StatefulWidget {
   const EmailLoginView({Key? key}) : super(key: key);
