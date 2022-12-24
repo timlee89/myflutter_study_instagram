@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:myflutter_study_instagram/backend/auth_methods.dart';
 import 'package:myflutter_study_instagram/utils/colors.dart';
 
 class EmailLoginView extends StatefulWidget {
@@ -14,12 +15,14 @@ class EmailLoginView extends StatefulWidget {
 class _EmailLoginViewState extends State<EmailLoginView> {
   late final TextEditingController _email;
   late final TextEditingController _password;
+  late bool _isLoading;
 
 
   @override
   void initState() {
     _email = TextEditingController();
     _password = TextEditingController();
+    _isLoading = false;
     super.initState();
   }
 
@@ -46,6 +49,28 @@ class _EmailLoginViewState extends State<EmailLoginView> {
       }
     }
   }
+
+  // void _loginUser() async {
+  //   setState(() {
+  //     _isLoading = true;
+  //   });
+  //   String res = await AuthMethods().loginUser(
+  //       email: _email.text, password: _password.text);
+  //   if (res == 'success') {
+  //     Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+  //
+  //     setState(() {
+  //       _isLoading = false;
+  //     });
+  //   } else {
+  //     setState(() {
+  //       _isLoading = false;
+  //     });
+  //     print("LoginUser Result is...");
+  //     print(res);
+  //     // showSnackBar(context, res);
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -90,8 +115,10 @@ class _EmailLoginViewState extends State<EmailLoginView> {
             TextButton(
               child: const Text('Log in', style: TextStyle(fontSize: 18),),
               onPressed: () async {
+                // await AuthMethods().loginUser(
+                //     email:_email.text, password:_password.text
+                // );
                 _signin();
-
               },
             ),
             const SizedBox(height: 50.0,),
@@ -111,17 +138,3 @@ class _EmailLoginViewState extends State<EmailLoginView> {
   }
 }
 
-
-class ddd extends StatefulWidget {
-  const ddd({Key? key}) : super(key: key);
-
-  @override
-  State<ddd> createState() => _dddState();
-}
-
-class _dddState extends State<ddd> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
