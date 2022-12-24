@@ -21,7 +21,7 @@ class _SettingState extends State<Setting> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("setting screen"),
+            Text("${FirebaseAuth.instance.currentUser?.email}님 환영합니다"),
             const SizedBox(height: 20.0,),
             TextButton(
               child: Text("Logout"),

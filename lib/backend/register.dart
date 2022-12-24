@@ -38,7 +38,16 @@ class _RegisterViewState extends State<RegisterView> {
         email: _email.text,
         password: _password.text,
       );
-      await FirebaseFirestore.instance.collection('users').doc(cred.user!.uid).set({
+
+      // // docs의 uid를 ID 생성할 때의 uid와 동일함 (cred.user!.uid와 동일)
+      // await FirebaseFirestore.instance.collection('users').doc(cred.user!.uid).set({
+      //   'username': _username.text,
+      //   'uid': cred.user!.uid,
+      //   'email': _email.text,
+      // });
+
+      // docs의 uid를 자동 생성하기 때문에 docs.uid field 값과는 다르다
+      await FirebaseFirestore.instance.collection('users').add({
         'username': _username.text,
         'uid': cred.user!.uid,
         'email': _email.text,
